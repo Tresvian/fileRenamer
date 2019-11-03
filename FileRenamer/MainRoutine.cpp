@@ -15,13 +15,15 @@ int mainRoutine(std::string rootPath, std::string dependent)
 	for (auto& p : fileList)
 	{
 		std::string toString = p.string();
+
 		int indexOf = 0;
-		indexOf = toString.find_last_of("\\");
+		indexOf = toString.find_last_of("/\\");
 
 		byteCounter += fs::file_size(p);
 
-		std::string newName = toString.substr(0, indexOf);
-		newName += createGuid();
+		std::string fileType = "." + toString.substr(indexOf+1);
+
+		std::string newName = "\\" + toString.substr(0, indexOf) + createGuid() + fileType;
 
 		std::cout << "Renamed " << toString << " to " << newName << std::endl;
 		fs::rename(p, fs::path(newName));
