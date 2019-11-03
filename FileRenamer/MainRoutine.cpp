@@ -18,6 +18,8 @@ int mainRoutine(std::string rootPath, std::string dependent)
 		int indexOf = 0;
 		indexOf = toString.find_last_of("\\");
 
+		byteCounter += fs::file_size(p);
+
 		std::string newName = toString.substr(0, indexOf);
 		newName += createGuid();
 
@@ -25,11 +27,13 @@ int mainRoutine(std::string rootPath, std::string dependent)
 		fs::rename(p, fs::path(newName));
 	}
 
+	std::cout << "Total file sizes processed " << byteCounter << std::endl;
+
 	return 0;
 }
 
 
-static void recursiveSearch(fs::path path, std::vector<fs::path>& outputFiles, int maxDepth)
+void recursiveSearch(fs::path path, std::vector<fs::path>& outputFiles, int maxDepth)
 {
 	std::cout << "Searched: " << path << std::endl;
 
