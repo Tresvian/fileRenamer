@@ -33,7 +33,9 @@ static void recursiveSearch(fs::path path, std::vector<fs::path>& outputFiles, i
 {
 	std::cout << "Searched: " << path << std::endl;
 
-	if (fs::is_directory(path))
+	if (maxDepth == MAXDEPTH)
+		std::cerr << "Hit max depth: " << path << std::endl;
+	else if (fs::is_directory(path))
 		recursiveSearch(path, outputFiles, maxDepth + 1);
 	else if (fs::is_regular_file(path))
 		outputFiles.push_back(path);
