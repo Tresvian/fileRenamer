@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 {
 	if (argc > 3 && argc < 2)
 	{
-		messageConsole("Invalid argument count, use /?");
+		errorConsole("Invalid argument count, use /?");
 		return -1;
 	}
 
@@ -31,12 +31,16 @@ int main(int argc, char* argv[])
 	// Sanitize, formed to std::string at size
 	if (std::string(argv[1]).size() > std::string(argv[1]).max_size() && std::string(argv[2]).size() > std::string(argv[2]).max_size())
 	{
-		messageConsole("Input too large");
+		errorConsole("Input too large");
 		return -2;
 	}
 
 	int programExit;
-	programExit = mainRoutine(std::string(argv[1]), std::string(argv[2]));
+
+	if (argc == 2)
+		programExit = mainRoutine(std::string(argv[1]), std::string(argv[2]));
+	else
+		programExit = mainRoutine(std::string(argv[1]), std::string("DEPENDENT=FALSE"));
 
 	return programExit;
 }

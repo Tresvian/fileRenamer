@@ -2,7 +2,8 @@
 
 int mainRoutine(std::string rootPath, std::string dependent)
 {
-
+	//todo
+	return 0;
 }
 
 void messageConsole(std::string var)
