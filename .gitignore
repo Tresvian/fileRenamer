@@ -23,8 +23,8 @@ bld/
 [Ll]og/
 
 # Testing project
-Sandbox/
-Sandbox1/
+Sandbox
+Sandbox1
 
 # Visual Studio 2015 cache/options directory
 .vs/
