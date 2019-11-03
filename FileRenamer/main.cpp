@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 			std::cerr << "Input too large" << std::endl;
 			return -2;
 		}
-		programExit = mainRoutine(std::string(argv[1]), std::string(argv[2]));
+		programExit = mainRoutine(std::string(argv[1]), std::string("DEPENDENT=FALSE"));
 	}
 	else
 	{
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 			std::cerr << "Input too large" << std::endl;
 			return -2;
 		}
-		programExit = mainRoutine(std::string(argv[1]), std::string("DEPENDENT=FALSE"));
+		programExit = mainRoutine(std::string(argv[1]), std::string(argv[2]));
 	}
 
 	return programExit;
