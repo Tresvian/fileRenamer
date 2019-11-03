@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{641A9658-01BD-41E0-8A30-2005647B5513}</ProjectGuid>
-    <RootNamespace>FileRenamer</RootNamespace>
+    <ProjectGuid>{14E6C9AF-DC78-422B-B519-4358E30A19B2}</ProjectGuid>
+    <RootNamespace>Project1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,13 +115,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainRoutine.cpp" />
-    <ClCompile Include="guid.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="guid.h" />
-    <ClInclude Include="MainRoutine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
