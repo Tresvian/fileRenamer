@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include <filesystem>
+#include <vector>
+#define MAXDEPTH 20
 
 int mainRoutine(std::string rootPath, std::string dependent);
-void messageConsole(std::string var);
-void errorConsole(std::string var);
