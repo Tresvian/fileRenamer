@@ -1,6 +1,12 @@
 #include "MainRoutine.h"
 #include "guid.h"
 
+/*
+This is the main execution of the program after called by main.cpp
+
+The paths is passed, parsed, and then creates a list of files to start renaming.
+Each file will have a RPC call to win32 API to get a unique GUID.
+*/
 namespace fs = std::experimental::filesystem;
 int mainRoutine(std::string rootPath, std::string dependent)
 {
@@ -21,6 +27,7 @@ int mainRoutine(std::string rootPath, std::string dependent)
 
 		byteCounter += fs::file_size(p);
 
+		// Requires fixing stream, I believe.
 		std::string fileType = "." + toString.substr(indexOf+1);
 
 		std::string newName = "\\" + toString.substr(0, indexOf) + createGuid() + fileType;
@@ -37,6 +44,7 @@ int mainRoutine(std::string rootPath, std::string dependent)
 
 void recursiveSearch(fs::path path, std::vector<fs::path>& outputFiles, int maxDepth)
 {
+	// Recursion safe here. Max depth defined on MainRoutine.h in case symbolic links are occuring.
 	std::cout << "Searched: " << path << std::endl;
 
 	if (maxDepth == MAXDEPTH)
@@ -45,9 +53,11 @@ void recursiveSearch(fs::path path, std::vector<fs::path>& outputFiles, int maxD
 	{
 		for (auto& p : fs::directory_iterator(path))
 		{
+			// Go one level deeper
 			recursiveSearch(p, outputFiles, maxDepth + 1);
 		}
 	}
+	// Found file, add to list for renaming.
 	else if (fs::is_regular_file(path))
 		outputFiles.push_back(path);
 	else

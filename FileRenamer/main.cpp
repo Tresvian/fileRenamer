@@ -3,12 +3,13 @@
 #include "MainRoutine.h"
 #include <stdexcept>
 /*
+Purpose of this program is to be a recursive file renamer. Given a path, it will go through all the folders and rename each file with a GUID.
+
 Error Codes
 	-1 Invalid amount of arguments
 	-2 Arguments too large
 	-3 Root path is not a directory
 	1 Help context called
-
 */
 
 int main(int argc, char* argv[])
@@ -40,6 +41,7 @@ int main(int argc, char* argv[])
 			std::cerr << "Input too large" << std::endl;
 			return -2;
 		}
+		// Program start
 		programExit = mainRoutine(std::string(argv[1]), std::string("DEPENDENT=FALSE"));
 	}
 	else
@@ -50,6 +52,7 @@ int main(int argc, char* argv[])
 			std::cerr << "Input too large" << std::endl;
 			return -2;
 		}
+		// Program start
 		programExit = mainRoutine(std::string(argv[1]), std::string(argv[2]));
 	}
 
